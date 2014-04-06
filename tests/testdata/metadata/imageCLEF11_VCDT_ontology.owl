@@ -1,0 +1,1642 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY owl2xml "http://www.w3.org/2006/12/owl2-xml#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY Photo_Tagging "http://www.idmt.fhg.de/Photo_Tagging.owl#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.idmt.fhg.de/Photo_Tagging.owl#"
+     xml:base="http://www.idmt.fhg.de/Photo_Tagging.owl"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl2xml="http://www.w3.org/2006/12/owl2-xml#"
+     xmlns:Photo_Tagging="http://www.idmt.fhg.de/Photo_Tagging.owl#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="">
+        <dc:publisher
+            >Fraunhofer Institute for Digital Media Technology (FHG IDMT)</dc:publisher>
+        <dc:format>March 2011</dc:format>
+        <dc:creator>Stefanie Nowak</dc:creator>
+        <dc:title
+            >Photo Tagging Ontology</dc:title>
+        <owl:versionInfo>2.1</owl:versionInfo>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:AnnotationProperty rdf:about="&dc;publisher"/>
+    <owl:AnnotationProperty rdf:about="&dc;title"/>
+    <owl:AnnotationProperty rdf:about="&dc;format"/>
+    <owl:AnnotationProperty rdf:about="&dc;creator"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#hasAnimals -->
+
+    <owl:ObjectProperty rdf:about="#hasAnimals">
+        <rdfs:range rdf:resource="#PicturedObjects.Animals"/>
+        <rdfs:subPropertyOf rdf:resource="#hasPicturedObjects"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#MediaObject"/>
+                    <rdf:Description rdf:about="#SceneDescription.AbstractCategories"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#hasBlur -->
+
+    <owl:ObjectProperty rdf:about="#hasBlur">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="#MediaObject"/>
+        <rdfs:range rdf:resource="#Quality.Blurring"/>
+        <rdfs:subPropertyOf rdf:resource="#hasQuality"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#hasCategories -->
+
+    <owl:ObjectProperty rdf:about="#hasCategories">
+        <rdfs:range rdf:resource="#SceneDescription.AbstractCategories"/>
+        <rdfs:subPropertyOf rdf:resource="#hasSceneDescription"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#MediaObject"/>
+                    <rdf:Description rdf:about="#SceneDescription.AbstractCategories"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#hasContentElement -->
+
+    <owl:ObjectProperty rdf:about="#hasContentElement">
+        <rdfs:range rdf:resource="#ContentElement"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#MediaObject"/>
+                    <rdf:Description rdf:about="#SceneDescription.AbstractCategories"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#hasID -->
+
+    <owl:ObjectProperty rdf:about="#hasID">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
+        <rdfs:range rdf:resource="#MediaID"/>
+        <rdfs:domain rdf:resource="#MediaObject"/>
+        <owl:inverseOf rdf:resource="#hasMediaObject"/>
+        <rdfs:subPropertyOf rdf:resource="#hasMetadata"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#hasIllumination -->
+
+    <owl:ObjectProperty rdf:about="#hasIllumination">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="#MediaObject"/>
+        <rdfs:range rdf:resource="#Representation.Illumination"/>
+        <rdfs:subPropertyOf rdf:resource="#hasRepresentation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#hasLandscapeElements -->
+
+    <owl:ObjectProperty rdf:about="#hasLandscapeElements">
+        <rdfs:range rdf:resource="#LandscapeElements"/>
+        <rdfs:subPropertyOf rdf:resource="#hasContentElement"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#MediaObject"/>
+                    <rdf:Description rdf:about="#SceneDescription.AbstractCategories"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#hasLicense -->
+
+    <owl:ObjectProperty rdf:about="#hasLicense">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:range rdf:resource="#License"/>
+        <rdfs:domain rdf:resource="#MediaObject"/>
+        <rdfs:subPropertyOf rdf:resource="#hasMetadata"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#hasMediaObject -->
+
+    <owl:ObjectProperty rdf:about="#hasMediaObject">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
+        <rdfs:domain rdf:resource="#MediaID"/>
+        <rdfs:range rdf:resource="#MediaObject"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#hasMetadata -->
+
+    <owl:ObjectProperty rdf:about="#hasMetadata">
+        <rdfs:domain rdf:resource="#MediaObject"/>
+        <rdfs:range rdf:resource="#Metadata"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#hasPersons -->
+
+    <owl:ObjectProperty rdf:about="#hasPersons">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:range rdf:resource="#PicturedObjects.Persons"/>
+        <rdfs:subPropertyOf rdf:resource="#hasPicturedObjects"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#MediaObject"/>
+                    <rdf:Description rdf:about="#SceneDescription.AbstractCategories"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#hasPicturedObjects -->
+
+    <owl:ObjectProperty rdf:about="#hasPicturedObjects">
+        <rdfs:range rdf:resource="#PicturedObjects"/>
+        <rdfs:subPropertyOf rdf:resource="#hasContentElement"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#MediaObject"/>
+                    <rdf:Description rdf:about="#SceneDescription.AbstractCategories"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#hasPlace -->
+
+    <owl:ObjectProperty rdf:about="#hasPlace">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:range rdf:resource="#SceneDescription.Place"/>
+        <rdfs:subPropertyOf rdf:resource="#hasSceneDescription"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#MediaObject"/>
+                    <rdf:Description rdf:about="#SceneDescription.AbstractCategories"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#hasQuality -->
+
+    <owl:ObjectProperty rdf:about="#hasQuality">
+        <rdfs:domain rdf:resource="#MediaObject"/>
+        <rdfs:range rdf:resource="#Quality"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#hasRepresentation -->
+
+    <owl:ObjectProperty rdf:about="#hasRepresentation">
+        <rdfs:domain rdf:resource="#MediaObject"/>
+        <rdfs:range rdf:resource="#Representation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#hasSceneDescription -->
+
+    <owl:ObjectProperty rdf:about="#hasSceneDescription">
+        <rdfs:range rdf:resource="#SceneDescription"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#MediaObject"/>
+                    <rdf:Description rdf:about="#SceneDescription.AbstractCategories"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#hasSeason -->
+
+    <owl:ObjectProperty rdf:about="#hasSeason">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:range rdf:resource="#SceneDescription.Seasons"/>
+        <rdfs:subPropertyOf rdf:resource="#hasSceneDescription"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#MediaObject"/>
+                    <rdf:Description rdf:about="#SceneDescription.AbstractCategories"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#hasTimeOfDay -->
+
+    <owl:ObjectProperty rdf:about="#hasTimeOfDay">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="#MediaObject"/>
+        <rdfs:range rdf:resource="#SceneDescription.TimeOfDay"/>
+        <rdfs:subPropertyOf rdf:resource="#hasSceneDescription"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#isAesthetic -->
+
+    <owl:ObjectProperty rdf:about="#isAesthetic">
+        <rdfs:domain rdf:resource="#MediaObject"/>
+        <rdfs:range rdf:resource="#Quality.Aesthetics"/>
+        <rdfs:subPropertyOf rdf:resource="#hasQuality"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#hasMediaItemPath -->
+
+    <owl:DatatypeProperty rdf:about="#hasMediaItemPath">
+        <rdfs:domain rdf:resource="#Metainformation.MediaItemPath"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#hasTaggingDate -->
+
+    <owl:DatatypeProperty rdf:about="#hasTaggingDate">
+        <rdfs:domain rdf:resource="#Metainformation.TaggingDate"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#ContentElement -->
+
+    <owl:Class rdf:about="#ContentElement">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#Impression -->
+
+    <owl:Class rdf:about="#Impression">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#Impression.Expressed -->
+
+    <owl:Class rdf:about="#Impression.Expressed">
+        <rdfs:subClassOf rdf:resource="#Impression"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#Impression.Expressed.Active -->
+
+    <owl:Class rdf:about="#Impression.Expressed.Active">
+        <rdfs:subClassOf rdf:resource="#Impression.Expressed"/>
+        <owl:disjointWith rdf:resource="#Impression.Expressed.Inactive"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#Impression.Expressed.Calm -->
+
+    <owl:Class rdf:about="#Impression.Expressed.Calm">
+        <rdfs:subClassOf rdf:resource="#Impression.Expressed"/>
+        <owl:disjointWith rdf:resource="#Impression.Expressed.Scary"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#Impression.Expressed.Euphoric -->
+
+    <owl:Class rdf:about="#Impression.Expressed.Euphoric">
+        <rdfs:subClassOf rdf:resource="#Impression.Expressed"/>
+        <owl:disjointWith rdf:resource="#Impression.Expressed.Melancholic"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#Impression.Expressed.Happy -->
+
+    <owl:Class rdf:about="#Impression.Expressed.Happy">
+        <rdfs:subClassOf rdf:resource="#Impression.Expressed"/>
+        <owl:disjointWith rdf:resource="#Impression.Expressed.Unpleasant"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#Impression.Expressed.Inactive -->
+
+    <owl:Class rdf:about="#Impression.Expressed.Inactive">
+        <rdfs:subClassOf rdf:resource="#Impression.Expressed"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#Impression.Expressed.Melancholic -->
+
+    <owl:Class rdf:about="#Impression.Expressed.Melancholic">
+        <rdfs:subClassOf rdf:resource="#Impression.Expressed"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#Impression.Expressed.Scary -->
+
+    <owl:Class rdf:about="#Impression.Expressed.Scary">
+        <rdfs:subClassOf rdf:resource="#Impression.Expressed"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#Impression.Expressed.Unpleasant -->
+
+    <owl:Class rdf:about="#Impression.Expressed.Unpleasant">
+        <rdfs:subClassOf rdf:resource="#Impression.Expressed"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#Impression.Felt -->
+
+    <owl:Class rdf:about="#Impression.Felt">
+        <rdfs:subClassOf rdf:resource="#Impression"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#Impression.Felt.Boring -->
+
+    <owl:Class rdf:about="#Impression.Felt.Boring">
+        <rdfs:subClassOf rdf:resource="#Impression.Felt"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#Impression.Felt.Cute -->
+
+    <owl:Class rdf:about="#Impression.Felt.Cute">
+        <rdfs:subClassOf rdf:resource="#Impression.Felt"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#Impression.Felt.Fancy -->
+
+    <owl:Class rdf:about="#Impression.Felt.Fancy">
+        <rdfs:subClassOf rdf:resource="#Impression.Felt"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#Impression.Felt.Funny -->
+
+    <owl:Class rdf:about="#Impression.Felt.Funny">
+        <rdfs:subClassOf rdf:resource="#Impression.Felt"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#LandscapeElements -->
+
+    <owl:Class rdf:about="#LandscapeElements">
+        <rdfs:subClassOf rdf:resource="#ContentElement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#LandscapeElements.Mountains -->
+
+    <owl:Class rdf:about="#LandscapeElements.Mountains">
+        <rdfs:subClassOf rdf:resource="#LandscapeElements"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#LandscapeElements.Plants -->
+
+    <owl:Class rdf:about="#LandscapeElements.Plants">
+        <rdfs:subClassOf rdf:resource="#LandscapeElements"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#LandscapeElements.Plants.Flowers -->
+
+    <owl:Class rdf:about="#LandscapeElements.Plants.Flowers">
+        <rdfs:subClassOf rdf:resource="#LandscapeElements.Plants"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#LandscapeElements.Plants.Garden -->
+
+    <owl:Class rdf:about="#LandscapeElements.Plants.Garden">
+        <rdfs:subClassOf rdf:resource="#LandscapeElements.Plants"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#LandscapeElements.Plants.Trees -->
+
+    <owl:Class rdf:about="#LandscapeElements.Plants.Trees">
+        <rdfs:subClassOf rdf:resource="#LandscapeElements.Plants"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#LandscapeElements.Sky -->
+
+    <owl:Class rdf:about="#LandscapeElements.Sky">
+        <rdfs:subClassOf rdf:resource="#LandscapeElements"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#LandscapeElements.Sky.Clouds -->
+
+    <owl:Class rdf:about="#LandscapeElements.Sky.Clouds">
+        <rdfs:subClassOf rdf:resource="#LandscapeElements.Sky"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#LandscapeElements.Water -->
+
+    <owl:Class rdf:about="#LandscapeElements.Water">
+        <rdfs:subClassOf rdf:resource="#LandscapeElements"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#LandscapeElements.Water.Lake -->
+
+    <owl:Class rdf:about="#LandscapeElements.Water.Lake">
+        <rdfs:subClassOf rdf:resource="#LandscapeElements.Water"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#LandscapeElements.Water.Rain -->
+
+    <owl:Class rdf:about="#LandscapeElements.Water.Rain">
+        <rdfs:subClassOf rdf:resource="#LandscapeElements.Water"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#LandscapeElements.Water.River -->
+
+    <owl:Class rdf:about="#LandscapeElements.Water.River">
+        <rdfs:subClassOf rdf:resource="#LandscapeElements.Water"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#LandscapeElements.Water.Sea -->
+
+    <owl:Class rdf:about="#LandscapeElements.Water.Sea">
+        <rdfs:subClassOf rdf:resource="#LandscapeElements.Water"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#License -->
+
+    <owl:Class rdf:about="#License">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#License.CCL"/>
+                    <rdf:Description rdf:about="#License.NotFree"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="#Metadata"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#License.CCL -->
+
+    <owl:Class rdf:about="#License.CCL">
+        <rdfs:subClassOf rdf:resource="#License"/>
+        <owl:disjointWith rdf:resource="#License.NotFree"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#License.NotFree -->
+
+    <owl:Class rdf:about="#License.NotFree">
+        <rdfs:subClassOf rdf:resource="#License"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#MediaID -->
+
+    <owl:Class rdf:about="#MediaID">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasMediaObject"/>
+                <owl:onClass rdf:resource="#MediaObject"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="#Metadata"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#MediaObject -->
+
+    <owl:Class rdf:about="#MediaObject">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasPersons"/>
+                <owl:someValuesFrom rdf:resource="#PicturedObjects.Persons"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasMetadata"/>
+                <owl:someValuesFrom rdf:resource="#Metadata"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasIllumination"/>
+                <owl:someValuesFrom rdf:resource="#Representation.Illumination"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasLicense"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasID"/>
+                <owl:someValuesFrom rdf:resource="#MediaID"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasBlur"/>
+                <owl:someValuesFrom rdf:resource="#Quality.Blurring"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#MediaObject.Photo -->
+
+    <owl:Class rdf:about="#MediaObject.Photo">
+        <rdfs:subClassOf rdf:resource="#MediaObject"/>
+        <owl:disjointWith rdf:resource="#MediaObject.Video"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#MediaObject.Video -->
+
+    <owl:Class rdf:about="#MediaObject.Video">
+        <rdfs:subClassOf rdf:resource="#MediaObject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#Metadata -->
+
+    <owl:Class rdf:about="#Metadata">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#Metainformation -->
+
+    <owl:Class rdf:about="#Metainformation">
+        <rdfs:subClassOf rdf:resource="#Metadata"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#Metainformation.Annotator -->
+
+    <owl:Class rdf:about="#Metainformation.Annotator">
+        <rdfs:subClassOf rdf:resource="#Metainformation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#Metainformation.MediaItemPath -->
+
+    <owl:Class rdf:about="#Metainformation.MediaItemPath">
+        <rdfs:subClassOf rdf:resource="#Metainformation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#Metainformation.TaggingDate -->
+
+    <owl:Class rdf:about="#Metainformation.TaggingDate">
+        <rdfs:subClassOf rdf:resource="#Metainformation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#PicturedObjects -->
+
+    <owl:Class rdf:about="#PicturedObjects">
+        <rdfs:subClassOf rdf:resource="#ContentElement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#PicturedObjects.Animals -->
+
+    <owl:Class rdf:about="#PicturedObjects.Animals">
+        <rdfs:subClassOf rdf:resource="#PicturedObjects"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#PicturedObjects.Animals.Bird -->
+
+    <owl:Class rdf:about="#PicturedObjects.Animals.Bird">
+        <rdfs:subClassOf rdf:resource="#PicturedObjects.Animals"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#PicturedObjects.Animals.Cat -->
+
+    <owl:Class rdf:about="#PicturedObjects.Animals.Cat">
+        <rdfs:subClassOf rdf:resource="#PicturedObjects.Animals"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#PicturedObjects.Animals.Dog -->
+
+    <owl:Class rdf:about="#PicturedObjects.Animals.Dog">
+        <rdfs:subClassOf rdf:resource="#PicturedObjects.Animals"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#PicturedObjects.Animals.Fish -->
+
+    <owl:Class rdf:about="#PicturedObjects.Animals.Fish">
+        <rdfs:subClassOf rdf:resource="#PicturedObjects.Animals"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#PicturedObjects.Animals.Horse -->
+
+    <owl:Class rdf:about="#PicturedObjects.Animals.Horse">
+        <rdfs:subClassOf rdf:resource="#PicturedObjects.Animals"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#PicturedObjects.Animals.Insect -->
+
+    <owl:Class rdf:about="#PicturedObjects.Animals.Insect">
+        <rdfs:subClassOf rdf:resource="#PicturedObjects.Animals"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#PicturedObjects.Food -->
+
+    <owl:Class rdf:about="#PicturedObjects.Food">
+        <rdfs:subClassOf rdf:resource="#PicturedObjects"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#PicturedObjects.MusicalInstrument -->
+
+    <owl:Class rdf:about="#PicturedObjects.MusicalInstrument">
+        <rdfs:subClassOf rdf:resource="#PicturedObjects"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#PicturedObjects.Persons -->
+
+    <owl:Class rdf:about="#PicturedObjects.Persons">
+        <rdfs:subClassOf rdf:resource="#PicturedObjects"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#PicturedObjects.Persons.Age -->
+
+    <owl:Class rdf:about="#PicturedObjects.Persons.Age">
+        <rdfs:subClassOf rdf:resource="#PicturedObjects.Persons"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#PicturedObjects.Persons.Age.Adult -->
+
+    <owl:Class rdf:about="#PicturedObjects.Persons.Age.Adult">
+        <rdfs:subClassOf rdf:resource="#PicturedObjects.Persons.Age"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#PicturedObjects.Persons.Age.Baby -->
+
+    <owl:Class rdf:about="#PicturedObjects.Persons.Age.Baby">
+        <rdfs:subClassOf rdf:resource="#PicturedObjects.Persons.Age"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#PicturedObjects.Persons.Age.Child -->
+
+    <owl:Class rdf:about="#PicturedObjects.Persons.Age.Child">
+        <rdfs:subClassOf rdf:resource="#PicturedObjects.Persons.Age"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#PicturedObjects.Persons.Age.OldPerson -->
+
+    <owl:Class rdf:about="#PicturedObjects.Persons.Age.OldPerson">
+        <rdfs:subClassOf rdf:resource="#PicturedObjects.Persons.Age"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#PicturedObjects.Persons.Age.Teenager -->
+
+    <owl:Class rdf:about="#PicturedObjects.Persons.Age.Teenager">
+        <rdfs:subClassOf rdf:resource="#PicturedObjects.Persons.Age"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#PicturedObjects.Persons.BodyPart -->
+
+    <owl:Class rdf:about="#PicturedObjects.Persons.BodyPart">
+        <rdfs:subClassOf rdf:resource="#PicturedObjects.Persons"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#PicturedObjects.Persons.Gender -->
+
+    <owl:Class rdf:about="#PicturedObjects.Persons.Gender">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#PicturedObjects.Persons.Gender.Both"/>
+                    <rdf:Description rdf:about="#PicturedObjects.Persons.Gender.Female"/>
+                    <rdf:Description rdf:about="#PicturedObjects.Persons.Gender.Male"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="#PicturedObjects.Persons"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#PicturedObjects.Persons.Gender.Both -->
+
+    <owl:Class rdf:about="#PicturedObjects.Persons.Gender.Both">
+        <rdfs:subClassOf rdf:resource="#PicturedObjects.Persons.Gender"/>
+        <owl:disjointWith rdf:resource="#PicturedObjects.Persons.Gender.Female"/>
+        <owl:disjointWith rdf:resource="#PicturedObjects.Persons.Gender.Male"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#PicturedObjects.Persons.Gender.Female -->
+
+    <owl:Class rdf:about="#PicturedObjects.Persons.Gender.Female">
+        <rdfs:subClassOf rdf:resource="#PicturedObjects.Persons.Gender"/>
+        <owl:disjointWith rdf:resource="#PicturedObjects.Persons.Gender.Male"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#PicturedObjects.Persons.Gender.Male -->
+
+    <owl:Class rdf:about="#PicturedObjects.Persons.Gender.Male">
+        <rdfs:subClassOf rdf:resource="#PicturedObjects.Persons.Gender"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#PicturedObjects.Persons.Number -->
+
+    <owl:Class rdf:about="#PicturedObjects.Persons.Number">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#PicturedObjects.Persons.Number.BigGroup"/>
+                    <rdf:Description rdf:about="#PicturedObjects.Persons.Number.NoPersons"/>
+                    <rdf:Description rdf:about="#PicturedObjects.Persons.Number.Single"/>
+                    <rdf:Description rdf:about="#PicturedObjects.Persons.Number.SmallGroup"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="#PicturedObjects.Persons"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#PicturedObjects.Persons.Number.BigGroup -->
+
+    <owl:Class rdf:about="#PicturedObjects.Persons.Number.BigGroup">
+        <rdfs:subClassOf rdf:resource="#PicturedObjects.Persons.Number"/>
+        <owl:disjointWith rdf:resource="#PicturedObjects.Persons.Number.NoPersons"/>
+        <owl:disjointWith rdf:resource="#PicturedObjects.Persons.Number.Single"/>
+        <owl:disjointWith rdf:resource="#PicturedObjects.Persons.Number.SmallGroup"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#PicturedObjects.Persons.Number.NoPersons -->
+
+    <owl:Class rdf:about="#PicturedObjects.Persons.Number.NoPersons">
+        <rdfs:subClassOf rdf:resource="#PicturedObjects.Persons.Number"/>
+        <owl:disjointWith rdf:resource="#PicturedObjects.Persons.Number.Single"/>
+        <owl:disjointWith rdf:resource="#PicturedObjects.Persons.Number.SmallGroup"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#PicturedObjects.Persons.Number.Single -->
+
+    <owl:Class rdf:about="#PicturedObjects.Persons.Number.Single">
+        <rdfs:subClassOf rdf:resource="#PicturedObjects.Persons.Number"/>
+        <owl:disjointWith rdf:resource="#PicturedObjects.Persons.Number.SmallGroup"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#PicturedObjects.Persons.Number.SmallGroup -->
+
+    <owl:Class rdf:about="#PicturedObjects.Persons.Number.SmallGroup">
+        <rdfs:subClassOf rdf:resource="#PicturedObjects.Persons.Number"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#PicturedObjects.Toy -->
+
+    <owl:Class rdf:about="#PicturedObjects.Toy">
+        <rdfs:subClassOf rdf:resource="#PicturedObjects"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#PicturedObjects.Vehicles -->
+
+    <owl:Class rdf:about="#PicturedObjects.Vehicles">
+        <rdfs:subClassOf rdf:resource="#PicturedObjects"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#PicturedObjects.Vehicles.Airplane -->
+
+    <owl:Class rdf:about="#PicturedObjects.Vehicles.Airplane">
+        <rdfs:subClassOf rdf:resource="#PicturedObjects.Vehicles"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#PicturedObjects.Vehicles.Bike -->
+
+    <owl:Class rdf:about="#PicturedObjects.Vehicles.Bike">
+        <rdfs:subClassOf rdf:resource="#PicturedObjects.Vehicles"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#PicturedObjects.Vehicles.Car -->
+
+    <owl:Class rdf:about="#PicturedObjects.Vehicles.Car">
+        <rdfs:subClassOf rdf:resource="#PicturedObjects.Vehicles"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#PicturedObjects.Vehicles.Ship -->
+
+    <owl:Class rdf:about="#PicturedObjects.Vehicles.Ship">
+        <rdfs:subClassOf rdf:resource="#PicturedObjects.Vehicles"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#PicturedObjects.Vehicles.Skateboard -->
+
+    <owl:Class rdf:about="#PicturedObjects.Vehicles.Skateboard">
+        <rdfs:subClassOf rdf:resource="#PicturedObjects.Vehicles"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#PicturedObjects.Vehicles.Train -->
+
+    <owl:Class rdf:about="#PicturedObjects.Vehicles.Train">
+        <rdfs:subClassOf rdf:resource="#PicturedObjects.Vehicles"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#Quality -->
+
+    <owl:Class rdf:about="#Quality">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#Quality.Aesthetics -->
+
+    <owl:Class rdf:about="#Quality.Aesthetics">
+        <rdfs:subClassOf rdf:resource="#Quality"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#Quality.Aesthetics.AestheticImpression -->
+
+    <owl:Class rdf:about="#Quality.Aesthetics.AestheticImpression">
+        <rdfs:subClassOf rdf:resource="#Quality.Aesthetics"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#Quality.Aesthetics.HighGradeOverallQuality -->
+
+    <owl:Class rdf:about="#Quality.Aesthetics.HighGradeOverallQuality">
+        <rdfs:subClassOf rdf:resource="#Quality.Aesthetics"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#Quality.Blurring -->
+
+    <owl:Class rdf:about="#Quality.Blurring">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Quality.Blurring.MotionBlur"/>
+                    <rdf:Description rdf:about="#Quality.Blurring.NoBlurDetectable"/>
+                    <rdf:Description rdf:about="#Quality.Blurring.OutOfFocus"/>
+                    <rdf:Description rdf:about="#Quality.Blurring.PartlyBlurred"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="#Quality"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#Quality.Blurring.MotionBlur -->
+
+    <owl:Class rdf:about="#Quality.Blurring.MotionBlur">
+        <rdfs:subClassOf rdf:resource="#Quality.Blurring"/>
+        <owl:disjointWith rdf:resource="#Quality.Blurring.NoBlurDetectable"/>
+        <owl:disjointWith rdf:resource="#Quality.Blurring.OutOfFocus"/>
+        <owl:disjointWith rdf:resource="#Quality.Blurring.PartlyBlurred"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#Quality.Blurring.NoBlurDetectable -->
+
+    <owl:Class rdf:about="#Quality.Blurring.NoBlurDetectable">
+        <rdfs:subClassOf rdf:resource="#Quality.Blurring"/>
+        <owl:disjointWith rdf:resource="#Quality.Blurring.OutOfFocus"/>
+        <owl:disjointWith rdf:resource="#Quality.Blurring.PartlyBlurred"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#Quality.Blurring.OutOfFocus -->
+
+    <owl:Class rdf:about="#Quality.Blurring.OutOfFocus">
+        <rdfs:subClassOf rdf:resource="#Quality.Blurring"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:complementOf rdf:resource="#Quality.Aesthetics.HighGradeOverallQuality"/>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="#Quality.Blurring.PartlyBlurred"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#Quality.Blurring.PartlyBlurred -->
+
+    <owl:Class rdf:about="#Quality.Blurring.PartlyBlurred">
+        <rdfs:subClassOf rdf:resource="#Quality.Blurring"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#Representation -->
+
+    <owl:Class rdf:about="#Representation">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#Representation.Art -->
+
+    <owl:Class rdf:about="#Representation.Art">
+        <rdfs:subClassOf rdf:resource="#Representation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#Representation.Art.Canvas -->
+
+    <owl:Class rdf:about="#Representation.Art.Canvas">
+        <rdfs:subClassOf rdf:resource="#Representation.Art"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#Representation.Art.Graffiti -->
+
+    <owl:Class rdf:about="#Representation.Art.Graffiti">
+        <rdfs:subClassOf rdf:resource="#Representation.Art"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#Representation.Art.Painting -->
+
+    <owl:Class rdf:about="#Representation.Art.Painting">
+        <rdfs:subClassOf rdf:resource="#Representation.Art"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#Representation.Illumination -->
+
+    <owl:Class rdf:about="#Representation.Illumination">
+        <rdfs:subClassOf rdf:resource="#Representation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#Representation.Illumination.Neutral -->
+
+    <owl:Class rdf:about="#Representation.Illumination.Neutral">
+        <rdfs:subClassOf rdf:resource="#Representation.Illumination"/>
+        <owl:disjointWith rdf:resource="#Representation.Illumination.Overexposed"/>
+        <owl:disjointWith rdf:resource="#Representation.Illumination.Underexposed"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#Representation.Illumination.Overexposed -->
+
+    <owl:Class rdf:about="#Representation.Illumination.Overexposed">
+        <rdfs:subClassOf rdf:resource="#Representation.Illumination"/>
+        <owl:disjointWith rdf:resource="#Representation.Illumination.Underexposed"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#Representation.Illumination.Shadow -->
+
+    <owl:Class rdf:about="#Representation.Illumination.Shadow">
+        <rdfs:subClassOf rdf:resource="#Representation.Illumination"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#Representation.Illumination.Underexposed -->
+
+    <owl:Class rdf:about="#Representation.Illumination.Underexposed">
+        <rdfs:subClassOf rdf:resource="#Representation.Illumination"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#Representation.Impression -->
+
+    <owl:Class rdf:about="#Representation.Impression">
+        <rdfs:subClassOf rdf:resource="#Representation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#Representation.Impression.Abstract -->
+
+    <owl:Class rdf:about="#Representation.Impression.Abstract">
+        <rdfs:subClassOf rdf:resource="#Representation.Impression"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#Representation.Impression.Artificial -->
+
+    <owl:Class rdf:about="#Representation.Impression.Artificial">
+        <rdfs:subClassOf rdf:resource="#Representation.Impression"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#Representation.Impression.Natural -->
+
+    <owl:Class rdf:about="#Representation.Impression.Natural">
+        <rdfs:subClassOf rdf:resource="#Representation.Impression"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#Representation.Impression.Technical -->
+
+    <owl:Class rdf:about="#Representation.Impression.Technical">
+        <rdfs:subClassOf rdf:resource="#Representation.Impression"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#Representation.MacroImage -->
+
+    <owl:Class rdf:about="#Representation.MacroImage">
+        <rdfs:subClassOf rdf:resource="#Representation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#Representation.Portrait -->
+
+    <owl:Class rdf:about="#Representation.Portrait">
+        <rdfs:subClassOf rdf:resource="#Representation"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasAnimals"/>
+                        <owl:someValuesFrom rdf:resource="#PicturedObjects.Animals"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasPersons"/>
+                        <owl:someValuesFrom rdf:resource="#PicturedObjects.Persons.Number.Single"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasPersons"/>
+                        <owl:someValuesFrom rdf:resource="#PicturedObjects.Persons.Number.SmallGroup"/>
+                    </owl:Restriction>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#Representation.StillLife -->
+
+    <owl:Class rdf:about="#Representation.StillLife">
+        <rdfs:subClassOf rdf:resource="#Representation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#SceneDescription -->
+
+    <owl:Class rdf:about="#SceneDescription">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#SceneDescription.AbstractCategories -->
+
+    <owl:Class rdf:about="#SceneDescription.AbstractCategories">
+        <rdfs:subClassOf rdf:resource="#SceneDescription"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#SceneDescription.AbstractCategories.Architecture -->
+
+    <owl:Class rdf:about="#SceneDescription.AbstractCategories.Architecture">
+        <rdfs:subClassOf rdf:resource="#SceneDescription.AbstractCategories"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#SceneDescription.AbstractCategories.BeachHolidays -->
+
+    <owl:Class rdf:about="#SceneDescription.AbstractCategories.BeachHolidays">
+        <rdfs:subClassOf rdf:resource="#SceneDescription.AbstractCategories"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasPlace"/>
+                <owl:someValuesFrom rdf:resource="#SceneDescription.Place.Outdoor"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasLandscapeElements"/>
+                <owl:someValuesFrom rdf:resource="#LandscapeElements"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#SceneDescription.AbstractCategories.BuildingsSights -->
+
+    <owl:Class rdf:about="#SceneDescription.AbstractCategories.BuildingsSights">
+        <rdfs:subClassOf rdf:resource="#SceneDescription.AbstractCategories"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#SceneDescription.AbstractCategories.Citylife -->
+
+    <owl:Class rdf:about="#SceneDescription.AbstractCategories.Citylife">
+        <rdfs:subClassOf rdf:resource="#SceneDescription.AbstractCategories"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#SceneDescription.AbstractCategories.Desert -->
+
+    <owl:Class rdf:about="#SceneDescription.AbstractCategories.Desert">
+        <rdfs:subClassOf rdf:resource="#SceneDescription.AbstractCategories"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasPlace"/>
+                <owl:someValuesFrom rdf:resource="#SceneDescription.Place.Outdoor"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasLandscapeElements"/>
+                <owl:someValuesFrom rdf:resource="#LandscapeElements"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#SceneDescription.AbstractCategories.FamiliyFriends -->
+
+    <owl:Class rdf:about="#SceneDescription.AbstractCategories.FamiliyFriends">
+        <rdfs:subClassOf rdf:resource="#SceneDescription.AbstractCategories"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#SceneDescription.AbstractCategories.LandscapeNature -->
+
+    <owl:Class rdf:about="#SceneDescription.AbstractCategories.LandscapeNature">
+        <rdfs:subClassOf rdf:resource="#SceneDescription.AbstractCategories"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasPlace"/>
+                <owl:someValuesFrom rdf:resource="#SceneDescription.Place.Outdoor"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasLandscapeElements"/>
+                <owl:someValuesFrom rdf:resource="#LandscapeElements"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#SceneDescription.AbstractCategories.Partylife -->
+
+    <owl:Class rdf:about="#SceneDescription.AbstractCategories.Partylife">
+        <rdfs:subClassOf rdf:resource="#SceneDescription.AbstractCategories"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#SceneDescription.AbstractCategories.SnowSkiing -->
+
+    <owl:Class rdf:about="#SceneDescription.AbstractCategories.SnowSkiing">
+        <rdfs:subClassOf rdf:resource="#SceneDescription.AbstractCategories"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasPlace"/>
+                <owl:someValuesFrom rdf:resource="#SceneDescription.Place.Outdoor"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#SceneDescription.Activity -->
+
+    <owl:Class rdf:about="#SceneDescription.Activity">
+        <rdfs:subClassOf rdf:resource="#SceneDescription"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#SceneDescription.Activity.Sports -->
+
+    <owl:Class rdf:about="#SceneDescription.Activity.Sports">
+        <rdfs:subClassOf rdf:resource="#SceneDescription.Activity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#SceneDescription.Events -->
+
+    <owl:Class rdf:about="#SceneDescription.Events">
+        <rdfs:subClassOf rdf:resource="#SceneDescription"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#SceneDescription.Events.Birthday -->
+
+    <owl:Class rdf:about="#SceneDescription.Events.Birthday">
+        <rdfs:subClassOf rdf:resource="#SceneDescription.Events"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#SceneDescription.Events.Travel -->
+
+    <owl:Class rdf:about="#SceneDescription.Events.Travel">
+        <rdfs:subClassOf rdf:resource="#SceneDescription.Events"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#SceneDescription.Events.Work -->
+
+    <owl:Class rdf:about="#SceneDescription.Events.Work">
+        <rdfs:subClassOf rdf:resource="#SceneDescription.Events"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#SceneDescription.Place -->
+
+    <owl:Class rdf:about="#SceneDescription.Place">
+        <rdfs:subClassOf rdf:resource="#SceneDescription"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#SceneDescription.Place.Indoor -->
+
+    <owl:Class rdf:about="#SceneDescription.Place.Indoor">
+        <rdfs:subClassOf rdf:resource="#SceneDescription.Place"/>
+        <owl:disjointWith rdf:resource="#SceneDescription.Place.Outdoor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#SceneDescription.Place.Outdoor -->
+
+    <owl:Class rdf:about="#SceneDescription.Place.Outdoor">
+        <rdfs:subClassOf rdf:resource="#SceneDescription.Place"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#SceneDescription.Seasons -->
+
+    <owl:Class rdf:about="#SceneDescription.Seasons">
+        <rdfs:subClassOf rdf:resource="#SceneDescription"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#SceneDescription.Seasons.Autumn -->
+
+    <owl:Class rdf:about="#SceneDescription.Seasons.Autumn">
+        <rdfs:subClassOf rdf:resource="#SceneDescription.Seasons"/>
+        <owl:disjointWith rdf:resource="#SceneDescription.Seasons.Spring"/>
+        <owl:disjointWith rdf:resource="#SceneDescription.Seasons.Summer"/>
+        <owl:disjointWith rdf:resource="#SceneDescription.Seasons.Winter"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#SceneDescription.Seasons.Spring -->
+
+    <owl:Class rdf:about="#SceneDescription.Seasons.Spring">
+        <rdfs:subClassOf rdf:resource="#SceneDescription.Seasons"/>
+        <owl:disjointWith rdf:resource="#SceneDescription.Seasons.Summer"/>
+        <owl:disjointWith rdf:resource="#SceneDescription.Seasons.Winter"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#SceneDescription.Seasons.Summer -->
+
+    <owl:Class rdf:about="#SceneDescription.Seasons.Summer">
+        <rdfs:subClassOf rdf:resource="#SceneDescription.Seasons"/>
+        <owl:disjointWith rdf:resource="#SceneDescription.Seasons.Winter"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#SceneDescription.Seasons.Winter -->
+
+    <owl:Class rdf:about="#SceneDescription.Seasons.Winter">
+        <rdfs:subClassOf rdf:resource="#SceneDescription.Seasons"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#SceneDescription.TimeOfDay -->
+
+    <owl:Class rdf:about="#SceneDescription.TimeOfDay">
+        <rdfs:subClassOf rdf:resource="#SceneDescription"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#SceneDescription.TimeOfDay.Day -->
+
+    <owl:Class rdf:about="#SceneDescription.TimeOfDay.Day">
+        <rdfs:subClassOf rdf:resource="#SceneDescription.TimeOfDay"/>
+        <owl:disjointWith rdf:resource="#SceneDescription.TimeOfDay.Night"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#SceneDescription.TimeOfDay.Night -->
+
+    <owl:Class rdf:about="#SceneDescription.TimeOfDay.Night">
+        <rdfs:subClassOf rdf:resource="#SceneDescription.TimeOfDay"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#SceneDescription.TimeOfDay.Sunny -->
+
+    <owl:Class rdf:about="#SceneDescription.TimeOfDay.Sunny">
+        <rdfs:subClassOf rdf:resource="#SceneDescription.TimeOfDay"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#SceneDescription.TimeOfDay.SunsetOrSunrise -->
+
+    <owl:Class rdf:about="#SceneDescription.TimeOfDay.SunsetOrSunrise">
+        <rdfs:subClassOf rdf:resource="#SceneDescription.TimeOfDay"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#UrbanElements -->
+
+    <owl:Class rdf:about="#UrbanElements">
+        <rdfs:subClassOf rdf:resource="#ContentElement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#UrbanElements.Bridge -->
+
+    <owl:Class rdf:about="#UrbanElements.Bridge">
+        <rdfs:subClassOf rdf:resource="#UrbanElements"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#UrbanElements.Church -->
+
+    <owl:Class rdf:about="#UrbanElements.Church">
+        <rdfs:subClassOf rdf:resource="#UrbanElements"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.idmt.fhg.de/Photo_Tagging.owl#UrbanElements.Street -->
+
+    <owl:Class rdf:about="#UrbanElements.Street">
+        <rdfs:subClassOf rdf:resource="#UrbanElements"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#Thing -->
+
+    <owl:Class rdf:about="&owl;Thing"/>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 2.2.1.1138) http://owlapi.sourceforge.net -->
+
