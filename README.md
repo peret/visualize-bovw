@@ -61,3 +61,30 @@ The `CaltechManager` expects a folder with the original image names and a `test`
 (the result of running `caltech_choose_testset.py`) and a folder `images`, where each image is named
 like this: `{category name}_{original image name}`
 
+### Training classifiers
+You can either train a single classifier, using a parameter-configuration of your choice,
+or you can start a nested grid search on one or more categories.
+
+In `runClassification.py`, you can specify a `DataManager` and a category and classifier to train.
+When running the script, the training will be executed, the resulting classifier is saved to disk and evaluated on the test set.
+
+You can load previously saved classifiers by running something like:
+```python
+from vcd import VisualConceptDetection
+from sklearn.ensemble import AdaBoostClassifier
+from datamanagers.CaltechManager import CaltechManager
+
+datamanager = CaltechManager()
+ada = AdaBoostClassifier() # set parameters of the classifier you want to load
+category = 'category_name'
+vcd = VisualConceptDetection(ada, datamanager)
+
+classifier = vcd.load_object("Classifier", category)
+```
+
+You can also run a complete nested grid search on any category with the `GridSearch` class.
+See `runGridSearch.py` for an usage example.
+Modify the `runGridSearch.py` code by changing the desired `DataManager`, parameter-hash,
+classifier, and category/categories. See also the
+[scikit-learn documentation](http://scikit-learn.org/stable/modules/generated/sklearn.grid_search.GridSearchCV.html)
+for the usage of grid search and the format of the parameters-hash.
