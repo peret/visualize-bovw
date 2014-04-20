@@ -35,3 +35,29 @@ The `CaltechManager` expects all image filenames to be in the form *category*_*i
 - CLASSIFIER: This is the directory into which classifiers will be serialized after the training step.
 - RESULTS: The final visualizations will be placed into this directory.
 - LOGS: If logging to file is enabled, the logfiles will be saved in this directory.
+
+## HOWTO
+
+### Prepare the data
+For ImageCLEF it should be enough to extract the images into a directory, together with the metadata on
+image categories (`concepts_2011.txt`, `trainset_gt_annotations_corrected.txt`, `testset_GT_annotations.txt`).
+Generate the BoVW and don't forget to configure the paths to the data directories.
+Either change the code of the `ClefManager` class, or do something like:
+
+```python
+datamanager = ClefManager()
+datamanager.PATHS['RESULTS'] = '/path/to/visualization/results'
+```
+in your calling code.
+
+To prepare the Caltech101 dataset, a few extra steps are necessary.
+First of all, the data needs to be split into a training- and test-set.
+To separate a fixed percentage of each category, you can use the `caltech_choose_testset.py` script.
+Just set the desired `TEST_SET_RATE` and run it in your Caltech101 folder (`101_ObjectCategories`).
+It will create a new subfolder `test` in each category folder and move randomly selected images into it.
+Secondly, for the datamanagers to work, you will need a directory with all the images in one place.
+As in the Caltech101 dataset, images are named similarly in different categories, you need to move and rename them.
+The `CaltechManager` expects a folder with the original image names and a `test` folder in each category
+(the result of running `caltech_choose_testset.py`) and a folder `images`, where each image is named
+like this: `{category name}_{original image name}`
+
