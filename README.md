@@ -95,3 +95,6 @@ If everything is configured correctly, this script should generate a visualizati
 picture in your dataset and store it in the `DataManager`'s `RESULTS` path.
 The previous contents of this directory are deleted, to avoid accidentally mixing old and new results.
 So make sure, that the right directory is configured, before running any of the visualization scripts.
+
+### Running the tests
+`python runTests.py`
