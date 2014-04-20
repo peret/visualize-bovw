@@ -5,7 +5,7 @@ These are the scripts I used for my master's thesis on *Visualizing Bag-of-Visua
 The code should only depend on [scikit-learn](https://github.com/scikit-learn/scikit-learn) (>= 0.14) and the
 [Python Imaging Library](http://www.pythonware.com/products/pil/) (for the visualizations).
 
-## Training classifiers and grid search
+## HOWTO
 
 ### DataManagers
 Data managers provide an interface to work with different datasets. Their main purpose is to expose methods to
@@ -35,8 +35,6 @@ The `CaltechManager` expects all image filenames to be in the form *category*_*i
 - CLASSIFIER: This is the directory into which classifiers will be serialized after the training step.
 - RESULTS: The final visualizations will be placed into this directory.
 - LOGS: If logging to file is enabled, the logfiles will be saved in this directory.
-
-## HOWTO
 
 ### Prepare the data
 For ImageCLEF it should be enough to extract the images into a directory, together with the metadata on
@@ -87,4 +85,13 @@ See `runGridSearch.py` for an usage example.
 Modify the `runGridSearch.py` code by changing the desired `DataManager`, parameter-hash,
 classifier, and category/categories. See also the
 [scikit-learn documentation](http://scikit-learn.org/stable/modules/generated/sklearn.grid_search.GridSearchCV.html)
-for the usage of grid search and the format of the parameters-hash.
+for more information on the usage of grid search and the format of the parameters-hash.
+
+### Visualizing feature importances
+To visualize your trained classifiers, run either `ensemble_visualization.py` or `svm_visualization.py`,
+depending on the classifier.
+Don't forget to first specify the category name and classifier in the script.
+If everything is configured correctly, this script should generate a visualization for each
+picture in your dataset and store it in the `DataManager`'s `RESULTS` path.
+The previous contents of this directory are deleted, to avoid accidentally mixing old and new results.
+So make sure, that the right directory is configured, before running any of the visualization scripts.
